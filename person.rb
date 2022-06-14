@@ -9,6 +9,9 @@ class Person
     @parent_permissions = parent_permissions
   end
 
+  def validate_name
+    @name = @Corrector.correct_name(@name)
+  end
   def can_use_services?
     of_age? || parent_permission == true
   end
