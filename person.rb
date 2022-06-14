@@ -12,8 +12,14 @@ class Person
   def of_age?
     @age >= 18
   end
-
+  
+  public : can_use_services
   def can_use_services?
     of_age? || parent_permission == true
   end
 end
+
+person = Person.new(100, 'mishecklivingi')
+perso.validate_name
+
+puts person.name
