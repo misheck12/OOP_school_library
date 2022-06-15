@@ -1,28 +1,29 @@
-class Person
+require './nameable'
+require './decorator'
+
+class Person < Nameable
+  def initialize(age, name = 'Unknown', parrent_permission: true)
+    super()
+    @id = Random.rand(1..1000)
+    @name = name
+    @age = age
+    @parrent_permission = parrent_permission
+  end
+
   attr_accessor :name, :age
   attr_reader :id
 
-  def initialize(age, name = 'unknown', parent_permissions: true)
-    @id = Random.ran(1...1000)
-    @name = name
-    @age = age
-    @parent_permissions = parent_permissions
-  end
-
-  def validate_name
-    @name = @Corrector.correct_name(@name)
-  end
   def can_use_services?
-    of_age? || parent_permission == true
+    is_of_age? || @parent_permission
   end
 
-  private :of_age?
+  def correct_name
+    @name
+  end
+
+  private
+
   def of_age?
     @age >= 18
   end
 end
-
-person = Person.new(100, 'mishecklivingi')
-perso.validate_name
-
-puts person.name
