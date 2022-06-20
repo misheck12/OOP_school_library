@@ -32,13 +32,19 @@ To get a local copy up and running follow these simple example steps.
 
 -Ruby
 
-## Authors
+## Author-misheck12
 
 👤 **Misheck Livingi**
-
+ubhandle](https://github.com/misheck12)
 - GitHub: [@githubhandle](https://github.com/misheck12)
 - Twitter: [@twitterhandle](https://twitter.com/mishecklivingi2)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/misheck-livingi-a0b536142/)
+
+## Author-Wuletaw 
+- GitHub: [@githubhandle](https://github.com/wuletawwonte)
+
+## Author-Matchoudi
+- GitHub: [@githubhandle](https://github.com/Lionrouge1)
 
 
 
