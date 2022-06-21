@@ -1,12 +1,27 @@
 class Rental
-  attr_accessor :date, :book, :person
+  attr_accessor :date
+  attr_reader :book, :person
 
   def initialize(date, book, person)
-    super()
     @date = date
+
     @book = book
-    book.rental.push(self) unless book.rental.include?(self)
+    book.rentals << self
+
     @person = person
-    person.rental.push(self) unless person.rental.include?(self)
+    person.rentals << self
+  end
+
+  def to_s
+    "Date: #{@date}, Book \"#{book.title}\" by #{book.author}"
+  end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'date' => @date,
+      'person_id' => @person.id,
+      'book_id' => @book.id
+    }.to_json(*args)
   end
 end

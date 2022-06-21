@@ -1,24 +1,68 @@
-require_relative './app'
-def run
-  puts ''
-  puts 'Welcome to school libray app!'
-  puts 'Please choose an option by entering a number:'
-  puts '
-    1 - List all books
-    2 - List all people
-    3 - Create a person
-    4 - Create a book
-    5 - Create a rental
-    6 - list all rentals for a given person id
-    7 - Exit
-  '
-  print 'Select an Option: '
-  gets.chomp
+require_relative 'handlers'
+require './book_ui'
+require './person_ui'
+require './rental_ui'
+
+class App
+  include Handlers
+
+  def initialize
+    @people = []
+    @books = []
+    @rentals = []
+  end
+
+  def run
+    puts 'Welcome to School Library App!'
+
+    loop do
+      print_options
+
+      option = gets.chomp
+
+      break if option == '7'
+
+      handle_option option
+    end
+
+    puts 'Thank you for using this app!'
+  end
+
+  def handle_option(option)
+    case option
+    when '1'
+      list_books
+    when '2'
+      list_people
+    when '3'
+      create_person
+    when '4'
+      create_book
+    when '5'
+      create_rental
+    when '6'
+      list_rentals_by_person_id
+    else
+      puts 'That is not a valid option'
+    end
+  end
+
+  def print_options
+    puts
+    puts 'Please choose an option by entering a number:'
+    puts '1 - List all books'
+    puts '2 - List all people'
+    puts '3 - Create a person'
+    puts '4 - Create a book'
+    puts '5 - Create a rental'
+    puts '6 - List all rentals for a given person id'
+    puts '7 - Exit'
+  end
 end
-$application = App.new
+
 def main
-  choice = run
-  $application.get_option choice
+  app = App.new
+  app.run
 end
 
 main
