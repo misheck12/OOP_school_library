@@ -5,5 +5,13 @@ def read_people
   people = JSON.parse(file) unles file.chomp.empty?
   $application.people = people&.map { |person|
     if person['class_instance'] == 'Student'
-      student = Student.new(person['age'], )
+      student = Student.new(person['age'], person['classroom'], person['name'], person['parent_permission'])
+      student.id = person['id']
+      @application.people.push(student)
+    else 
+      teacher = Teacher.new(person['age'], person['specialization'], person['name'])
+      teacher.id = person['id']
+      @application.people.push(teacher)
+    end
+  }
 end
