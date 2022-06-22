@@ -7,17 +7,14 @@ require_relative './student'
 require_relative './data_access.rb'
 
 class App
-
   attr_accessor :people, :books, :rentals
 
   def initialize
-    @books = []    
+    @books = []
     @people = []
     @rentals = []
     @classroom_default = Classroom.new('default-classroom')
   end
-
-  # rubocop:disable Metrics
 
   def get_option(user_input)
     case user_input

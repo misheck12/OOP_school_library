@@ -4,7 +4,7 @@ require_relative './teacher.rb'
 def read_people
   file = File.read('people.json') if File.exist?('people.json')
   people = JSON.parse(file) unless file.chomp.empty?
-  people&.map do |person|
+  people.map do |person|
     if person['class_instance'] == 'Student'
       student = Student.new(person['age'], person['classroom'], person['name'], person['parent_permission'])
       student.id = person['id']
@@ -20,13 +20,13 @@ end
 def read_books
   file = File.read('books.json') if File.exist?('books.json')
   books = JSON.parse(file) unless file.chomp.empty?
-  $application.books = books&.map { |book| Book.new(book['title'], book['author']) } || []
+  $application.books = books.map { |book| Book.new(book['title'], book['author']) } || []
 end
 
 def read_rentals
   file = File.read('rentals.json') if File.exist?('rentals.json')
   rentals = JSON.parse(file) unless file.chomp.empty?
-  $application.rentals = rentals&.map { |rental| Rental.new(rental['date'], rental['book_title'], rental['person_id']) } || []
+  $application.rentals = rentals.map { |rental| Rental.new(rental['date'], rental['book_title'], rental['person_id']) } || []
 end
 
 def save_data
