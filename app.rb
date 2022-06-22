@@ -4,17 +4,17 @@ require_relative './person'
 require_relative './rental'
 require_relative './teacher'
 require_relative './student'
-# require_relative './main'
+require_relative './data_access'
 
 class App
+  attr_accessor :people, :books, :rentals
+
   def initialize
     @books = []
     @people = []
     @rentals = []
     @classroom_default = Classroom.new('default-classroom')
   end
-
-  # rubocop:disable Metrics
 
   def get_option(user_input)
     case user_input
@@ -30,15 +30,10 @@ class App
       create_a_rental
     when '6'
       list_rentals_by_person_id
-    when '7'
-      puts 'Thank you for using our library'
     else
-      puts 'Please enter a number between 1 and 7'
-      main
+      save_data
     end
   end
-
-  # rubocop:enable Metrics
 
   def list_all_books
     puts 'There are no books registered! Please add books.' if @books.empty?
@@ -57,19 +52,15 @@ class App
   def create_a_person
     print 'Do you want to create a student (1) or teacher (2) [Input a number]: '
     option = gets.chomp
-
     case option
     when '1'
       create_a_student
     when '2'
       create_a_teacher
     else
-      while option != '1' || option != '2'
-        print 'Invalid input. Please type 1 or 2 [Input a number]:'
-        option = gets.chomp
-        create_a_student if option == '1'
-        create_a_teacher if option == '2'
-      end
+      option = gets.chomp
+      create_a_student if option == '1'
+      create_a_teacher if option == '2'
     end
   end
 
@@ -84,7 +75,7 @@ class App
     parent_permission = gets.chomp.downcase
 
     student = Student.new(age, @class, name, parent_permission)
-    @people << student
+    @people.push(student)
 
     puts 'Student created successfully'
     main
@@ -137,7 +128,7 @@ class App
     print 'Date: '
     date = gets.chomp
 
-    rental = Rental.new(date, @books[book_id], @people[person_id])
+    rental = Rental.new(date, @books[book_id].title, @people[person_id].id)
     @rentals << rental
 
     puts 'Rental created successfully'
@@ -150,7 +141,7 @@ class App
 
     puts 'Rentals:'
     @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: #{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
+      puts "Date: #{rental.date}, Book: #{rental.book_title} " if rental.person_id == id
     end
     main
   end
