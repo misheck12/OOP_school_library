@@ -2,7 +2,7 @@ require_relative './person'
 require_relative './classroom'
 
 class Student < Person
-  attr_reader :classroom
+  attr_accessor :classroom
 
   # rubocop: disable Style/OptionalBooleanParameter
 

@@ -18,13 +18,9 @@ def run
   gets.chomp
 end
 $application = App.new
-
-def app_starter
-  read_people
-end
+read_people
 
 def main
-  read_people
   choice = run
   $application.get_option choice
 end
