@@ -26,7 +26,8 @@ end
 def read_rentals
   file = File.read('rentals.json') if File.exist?('rentals.json')
   rentals = JSON.parse(file) unless file.chomp.empty?
-  $application.rentals = rentals.map do |rental| Rental.new(rental['date'], rental['book_title'], rental['person_id']) || []
+  $application.rentals = rentals.map { |rental| 
+    Rental.new(rental['date'], rental['book_title'], rental['person_id']) } || []
 end
 
 def save_data
