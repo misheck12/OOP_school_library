@@ -11,7 +11,7 @@ class App
   attr_accessor :people, :books, :rentals
 
   def initialize
-    @books = []
+    @books = []    
     @people = []
     @rentals = []
     @classroom_default = Classroom.new('default-classroom')
@@ -88,7 +88,7 @@ class App
     parent_permission = gets.chomp.downcase
 
     student = Student.new(age, @class, name, parent_permission)
-    @people << student
+    @people.push(student)
 
     puts 'Student created successfully'
     main
