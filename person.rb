@@ -1,36 +1,43 @@
-require_relative './nameable'
+require_relative 'corrector'
 
 class Person < Nameable
   attr_accessor :name, :age, :id, :parent_permission
   attr_reader :rental
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
-    super()
+  def initialize(age:, parent_permission: true, name: 'Unknown')
     @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rental = []
+    @rentals = []
   end
+
+  def can_use_services?
+    of_age? || @parent_permission
+  end
+
+  def validate_name
+    corrector = Corrector.new
+    @name = corrector.correct_name @name
+  end
+
+  private
 
   def of_age?
     @age >= 18
   end
 
-  private :of_age?
-
-  def can_use_services?
-    of_age || parent_permission == true
+  def to_s
+    "Name: #{@name}, ID: #{@id}, Age: #{@age}"
   end
 
-  def correct_name
-    @name
-  end
-
-  def add_rental(book, date)
-    Rental.new(date, book, self)
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'id' => @id,
+      'name' => @name,
+      'age' => @age,
+      'parent_permission' => @parent_permission
+    }.to_json(*args)
   end
 end
-
-# # person = Person.new(22, 'maximilianus')
-# # p person.correct_name

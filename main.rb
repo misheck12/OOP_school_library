@@ -23,8 +23,8 @@ read_books
 read_rentals
 
 def main
-  choice = run
-  $application.get_option choice
+  app = App.new
+  app.run
 end
 
 main

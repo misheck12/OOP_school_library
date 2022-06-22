@@ -1,5 +1,4 @@
-require_relative './person'
-require_relative './classroom'
+require_relative('./person')
 
 class Student < Person
   attr_reader :classroom
@@ -10,7 +9,6 @@ class Student < Person
   end
 
   def classroom=(classroom)
-    @classroom = classroom
     classroom.students.push(self) unless classroom.students.include?(self)
   end
 
