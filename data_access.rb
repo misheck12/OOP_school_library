@@ -33,5 +33,12 @@ def save_person
   end
   people = JSON.generate(peoples_array_data)
   File.write('people.json', people)
-  
+end
+
+def save_book
+  books_array = $application.books.map do |book| 
+    { class_instance: 'Book', title: book.title, author: book.author }
+  end
+  books = JSON.generate(books_array)
+  File.write('books.json', books)
 end
