@@ -32,7 +32,6 @@ class App
       list_rentals_by_person_id
     when '7'
       save_data
-      puts 'Thank you for using our library'
     else
       puts 'Please enter a number between 1 and 7'
       main
@@ -56,7 +55,6 @@ class App
   def create_a_person
     print 'Do you want to create a student (1) or teacher (2) [Input a number]: '
     option = gets.chomp
-
     case option
     when '1'
       create_a_student

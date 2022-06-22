@@ -33,6 +33,7 @@ def save_data
   save_person
   save_book
   save_rental
+  puts 'Thank you for using our library'
 end
 
 def save_person
