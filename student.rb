@@ -9,8 +9,6 @@ class Student < Person
     @classroom = classroom
   end
 
-  # rubocop: enable Style/OptionalBooleanParameter
-
   def classroom=(classroom)
     @classroom = classroom
     classroom.students.push(self) unless classroom.students.include?(self)

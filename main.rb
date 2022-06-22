@@ -1,5 +1,5 @@
 require_relative './app'
-require_relative './data_access.rb'
+require_relative './data_access'
 
 def run
   puts ''
