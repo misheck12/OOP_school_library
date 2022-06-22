@@ -8,6 +8,8 @@ require_relative './data_access.rb'
 
 class App
 
+  attr_accessor :people, :books, :rentals
+
   def initialize
     @books = []
     @people = []
