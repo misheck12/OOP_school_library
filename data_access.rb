@@ -23,6 +23,12 @@ def read_books
   $application.books = books&.map { |book| Book.new(book['title'], book['author']) } || []
 end
 
+def read_rentals
+  file = File.read('rentals.json') if File.exist?('rentals.json')
+  rentals = JSON.parse(file) unless file.chomp.empty?
+  $application.rentals = rentals&.map { |rental| Rental.new(rental['date'], rental['book_title'], rental['person_id']) } || []
+end
+
 def save_data
   save_person
   save_book
@@ -53,7 +59,7 @@ end
 
 def save_rental
   rentals_array = $application.rentals.map do |rental|
-    { class_instance: 'Rental', date: rental.date, book_title: rental.book.title, person_id: rental.person.id }
+    { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
   end
   rentals = JSON.generate(rentals_array)
   File.write('rentals.json', rentals)  

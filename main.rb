@@ -20,6 +20,7 @@ end
 $application = App.new
 read_people
 read_books
+read_rentals
 
 def main
   choice = run

@@ -1,1 +1,1 @@
-[{"class_instance":"Teacher","id":73,"age":23,"specialization":"Teaching","name":"Wuletaw Wonte"}]
+[{"class_instance":"Student","id":186,"age":23,"classroom":null,"name":"Wuletaw Wonte","parent_permission":"y"},{"class_instance":"Teacher","id":503,"age":34,"specialization":"Teaching","name":"Misheck Living"}]
