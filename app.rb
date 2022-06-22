@@ -4,7 +4,7 @@ require_relative './person'
 require_relative './rental'
 require_relative './teacher'
 require_relative './student'
-require_relative './data_access.rb'
+require_relative './data_access'
 
 class App
   attr_accessor :people, :books, :rentals
@@ -38,8 +38,6 @@ class App
       main
     end
   end
-
-  # rubocop:enable Metrics
 
   def list_all_books
     puts 'There are no books registered! Please add books.' if @books.empty?
