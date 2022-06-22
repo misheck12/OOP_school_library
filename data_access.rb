@@ -58,9 +58,7 @@ def save_book
 end
 
 def save_rental
-  rentals_array = $application.rentals.map do |rental|
-    { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
-  end
+  rentals_array = $application.rentals.map do |rental| { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
   rentals = JSON.generate(rentals_array)
   File.write('rentals.json', rentals)
 end
