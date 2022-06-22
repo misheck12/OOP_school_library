@@ -17,8 +17,15 @@ def read_people
   end || []
 end
 
+def read_books
+  file = File.read('books.json') if File.exist?('books.json')
+  books = JSON.parse(file) unless file.chomp.empty?
+  $application.books = books&.map { |book| Book.new(book['title'], book['author']) } || []
+end
+
 def save_data
   save_person
+  save_book
 end
 
 def save_person

@@ -19,6 +19,7 @@ def run
 end
 $application = App.new
 read_people
+read_books
 
 def main
   choice = run
