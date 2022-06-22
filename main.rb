@@ -16,6 +16,10 @@ def run
   gets.chomp
 end
 $application = App.new
+
+def app_starter
+end
+
 def main
   choice = run
   $application.get_option choice

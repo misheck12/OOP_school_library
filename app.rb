@@ -7,6 +7,7 @@ require_relative './student'
 # require_relative './main'
 
 class App
+
   def initialize
     @books = []
     @people = []
