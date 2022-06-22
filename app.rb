@@ -4,7 +4,7 @@ require_relative './person'
 require_relative './rental'
 require_relative './teacher'
 require_relative './student'
-# require_relative './main'
+require_relative './data_access.rb'
 
 class App
 
@@ -32,6 +32,7 @@ class App
     when '6'
       list_rentals_by_person_id
     when '7'
+      save_data
       puts 'Thank you for using our library'
     else
       puts 'Please enter a number between 1 and 7'

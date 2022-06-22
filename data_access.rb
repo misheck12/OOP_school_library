@@ -15,3 +15,21 @@ def read_people
     end
   }
 end
+
+def save_data
+  save_person
+end
+
+def save_person
+  peoples_array_data = $application.people.map do |person|
+    if person.instance_of?(Teacher)
+      { class_instance: 'Teacher', id: person.id, age: person.age, specialization: person.specialization,
+      name: person.name }
+    else
+      { class_instance: 'Student', id: person.id, age: person.age, classroom: person.classroom,
+      name: person.name, parent_permission: person.parent_permission } 
+    end
+  end
+  people = JSON.generate(peoples_array_data)
+  File.write('people.json', people)
+end
