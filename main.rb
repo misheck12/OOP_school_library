@@ -1,4 +1,6 @@
 require_relative './app'
+require_relative './data_access.rb'
+
 def run
   puts ''
   puts 'Welcome to school libray app!'
@@ -18,9 +20,11 @@ end
 $application = App.new
 
 def app_starter
+  read_people
 end
 
 def main
+  read_people
   choice = run
   $application.get_option choice
 end
