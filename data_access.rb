@@ -9,7 +9,7 @@ def read_people
       student = Student.new(person['age'], person['classroom'], person['name'], person['parent_permission'])
       student.id = person['id']
       $application.people.push(student)
-    else 
+    else
       teacher = Teacher.new(person['age'], person['specialization'], person['name'])
       teacher.id = person['id']
       $application.people.push(teacher)
@@ -39,10 +39,10 @@ def save_person
   peoples_array_data = $application.people.map do |person|
     if person.instance_of?(Teacher)
       { class_instance: 'Teacher', id: person.id, age: person.age, specialization: person.specialization,
-      name: person.name }
+        name: person.name }
     else
       { class_instance: 'Student', id: person.id, age: person.age, classroom: person.classroom,
-      name: person.name, parent_permission: person.parent_permission } 
+        name: person.name, parent_permission: person.parent_permission }
     end
   end
   people = JSON.generate(peoples_array_data)
@@ -50,7 +50,7 @@ def save_person
 end
 
 def save_book
-  books_array = $application.books.map do |book| 
+  books_array = $application.books.map do |book|
     { class_instance: 'Book', title: book.title, author: book.author }
   end
   books = JSON.generate(books_array)
@@ -62,5 +62,5 @@ def save_rental
     { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
   end
   rentals = JSON.generate(rentals_array)
-  File.write('rentals.json', rentals)  
+  File.write('rentals.json', rentals)
 end
