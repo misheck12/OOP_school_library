@@ -39,10 +39,10 @@ end
 def save_person
   peoples_array_data = $application.people.map do |person|
     if person.instance_of?(Teacher)
-      { class_instance: 'Teacher', id: person.id, age: person.age, specialization: person.specialization,
+      return { class_instance: 'Teacher', id: person.id, age: person.age, specialization: person.specialization,
         name: person.name }
     else
-      { class_instance: 'Student', id: person.id, age: person.age, classroom: person.classroom,
+      return { class_instance: 'Student', id: person.id, age: person.age, classroom: person.classroom,
         name: person.name, parent_permission: person.parent_permission }
     end
   end
@@ -52,7 +52,7 @@ end
 
 def save_book
   books_array = $application.books.map do |book|
-    { class_instance: 'Book', title: book.title, author: book.author }
+    return { class_instance: 'Book', title: book.title, author: book.author }
   end
   books = JSON.generate(books_array)
   File.write('books.json', books)
@@ -60,7 +60,7 @@ end
 
 def save_rental
   rentals_array = $application.rentals.map do |rental| 
-    { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
+    return { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
   end
   rentals = JSON.generate(rentals_array)
   File.write('rentals.json', rentals)

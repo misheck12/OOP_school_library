@@ -16,6 +16,8 @@ class App
     @classroom_default = Classroom.new('default-classroom')
   end
 
+  # rubocop:disable Metrics/CyclonicComplexity
+  
   def get_option(user_input)
     case user_input
     when '1'
