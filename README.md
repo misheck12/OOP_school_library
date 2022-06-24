@@ -24,7 +24,10 @@ To get a local copy up and running follow these simple example steps.
 
 - then run ```bundle install```.
 
+### Testing 
 
+- install rspec (gem install rspec)
+- run rspec (bundle exec rspec)
 
 
 
@@ -45,7 +48,6 @@ ubhandle](https://github.com/misheck12)
 
 ## Author-Matchoudi
 - GitHub: [@githubhandle](https://github.com/Lionrouge1)
-
 
 
 ## 🤝 Contributing
