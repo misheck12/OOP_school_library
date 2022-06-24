@@ -12,11 +12,11 @@ describe Student do
     end
 
     it 'the student can have permission to use services' do
-      expect(student1.can_use_services?).to eq true
+      expect(student1.can_use_services?).to eq false
     end
 
     it 'the student can have permission to use services' do
-      expect(student2.can_use_services?).to eq false
+      expect(student2.can_use_services?).to eq true
     end
   end
 end
