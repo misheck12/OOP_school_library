@@ -1,14 +1,11 @@
 require_relative '../rental'
-require_relative '../book'
 
 describe Rental do
-  context 'When providing a book and a person' do
-    person = Person.new(20, 'John', true)
-    book = Book.new('Habits', 'James')
-    rented = Rental.new('01-02-2022', book, person)
+  context 'When providing a book title and a person id' do
+    rented = Rental.new('01-02-2022', "BookTitle", 2)
 
     it 'Should create rental for person' do
-      expect(person.rentals).to include(rented)
+      expect(rented).to be_an_instance_of Rental
     end
   end
 end
