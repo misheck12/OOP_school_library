@@ -4,8 +4,8 @@ require_relative '../person'
 describe Student do
   context 'When providing student information' do
     age = 15
-    student1 = Student.new(age: age, classroom: "classroomOne", name: 'Kalolo')
-    student2 = Student.new(age: 10, classroom: "classroomOne", name: 'Tom', parent_permission: false)
+    student1 = Student.new(age: age, name: 'Kalolo')
+    student2 = Student.new(age: 10, name: 'Tom', parent_permission: false)
 
     it 'Creates a new student with an age of 20 and a name of Kalolo' do
       expect(student1).to be_an_instance_of Student
