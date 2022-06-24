@@ -2,7 +2,7 @@ require_relative '../teacher'
 
 describe Teacher do
   context 'When providing teacher information' do
-    teacher = Teacher.new(age: 25, specialization: 'Math')
+    teacher = Teacher.new(25, 'Math')
 
     it 'Creates a new teacher with an age of 25 and a specialization of math' do
       expect(teacher).to be_an_instance_of Teacher
