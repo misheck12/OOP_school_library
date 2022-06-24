@@ -17,11 +17,11 @@ describe 'Person' do
     end
 
     it 'has a default name of Unknown' do
-      expect(person.name).to eql 'Unknown'
+      expect(@person.name).to eql 'Unknown'
     end
 
     it 'should have parents permission' do
-      expect(person.parent_permission).to be true
+      expect(@person.parent_permission).to be true
     end
 
     it 'should not have parents permission' do
