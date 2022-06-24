@@ -6,7 +6,6 @@ describe 'Person' do
   end
 
   describe '#new' do
-    person = Person.new(15)
 
     it 'return the person object' do
       expect(@person).to be_an_instance_of Person
@@ -21,7 +20,7 @@ describe 'Person' do
     end
 
     it 'should not have parents permission' do
-      nperson = Person.new(15, "Susan", false)
+      nperson = Person.new(15, 'Susan', false)
       expect(nperson.parent_permission).to be_falsey
     end
   end
