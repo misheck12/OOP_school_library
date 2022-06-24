@@ -4,7 +4,7 @@ require_relative '../person'
 describe Student do
   context 'When providing student information' do
     age = 15
-    student1 = Student.new(age, nil, 'Kalolo')
+    student1 = Student.new(age, nil, 'Kalolo', true)
     student2 = Student.new(10, nil, 'Tom', false)
 
     it 'Creates a new student with an age of 20 and a name of Kalolo' do
