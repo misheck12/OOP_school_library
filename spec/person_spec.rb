@@ -6,7 +6,6 @@ describe 'Person' do
   end
 
   describe '#new' do
-
     it 'return the person object' do
       expect(@person).to be_an_instance_of Person
     end
