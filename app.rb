@@ -5,7 +5,6 @@ require_relative './rental'
 require_relative './teacher'
 require_relative './student'
 require_relative './data_access'
-
 class App
   attr_accessor :people, :books, :rentals
 
