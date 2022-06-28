@@ -15,8 +15,6 @@ class App
     @classroom_default = Classroom.new('default-classroom')
   end
 
-  # rubocop:disable Metrics/CyclonicComplexity
-  
   def get_option(user_input)
     case user_input
     when '1'
@@ -31,11 +29,8 @@ class App
       create_a_rental
     when '6'
       list_rentals_by_person_id
-    when '7'
-      save_data
     else
-      puts 'Please enter a number between 1 and 7'
-      main
+      save_data
     end
   end
 
@@ -62,12 +57,9 @@ class App
     when '2'
       create_a_teacher
     else
-      while option != '1' || option != '2'
-        print 'Invalid input. Please type 1 or 2 [Input a number]:'
-        option = gets.chomp
-        create_a_student if option == '1'
-        create_a_teacher if option == '2'
-      end
+      option = gets.chomp
+      create_a_student if option == '1'
+      create_a_teacher if option == '2'
     end
   end
 

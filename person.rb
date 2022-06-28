@@ -31,6 +31,3 @@ class Person < Nameable
     Rental.new(date, book, self)
   end
 end
-
-# # person = Person.new(22, 'maximilianus')
-# # p person.correct_name

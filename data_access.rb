@@ -1,5 +1,5 @@
-require 'json'
 require_relative './teacher'
+require 'json'
 
 def read_people
   file = File.read('people.json') if File.exist?('people.json')
@@ -26,7 +26,9 @@ end
 def read_rentals
   file = File.read('rentals.json') if File.exist?('rentals.json')
   rentals = JSON.parse(file) unless file.chomp.empty?
-  $application.rentals = rentals.map do |rental| Rental.new(rental['date'], rental['book_title'], rental['person_id']) || []
+  $application.rentals = rentals.map do |rental|
+    Rental.new(rental['date'], rental['book_title'], rental['person_id'])
+  end
 end
 
 def save_data
@@ -39,10 +41,10 @@ end
 def save_person
   peoples_array_data = $application.people.map do |person|
     if person.instance_of?(Teacher)
-      return { class_instance: 'Teacher', id: person.id, age: person.age, specialization: person.specialization,
+      { class_instance: 'Teacher', id: person.id, age: person.age, specialization: person.specialization,
         name: person.name }
     else
-      return { class_instance: 'Student', id: person.id, age: person.age, classroom: person.classroom,
+      { class_instance: 'Student', id: person.id, age: person.age, classroom: person.classroom,
         name: person.name, parent_permission: person.parent_permission }
     end
   end
@@ -52,15 +54,15 @@ end
 
 def save_book
   books_array = $application.books.map do |book|
-    return { class_instance: 'Book', title: book.title, author: book.author }
+    { class_instance: 'Book', title: book.title, author: book.author }
   end
   books = JSON.generate(books_array)
   File.write('books.json', books)
 end
 
 def save_rental
-  rentals_array = $application.rentals.map do |rental| 
-    return { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
+  rentals_array = $application.rentals.map do |rental|
+    { class_instance: 'Rental', date: rental.date, book_title: rental.book_title, person_id: rental.person_id }
   end
   rentals = JSON.generate(rentals_array)
   File.write('rentals.json', rentals)
